@@ -12,12 +12,13 @@ const webpackConfig = require('../webpack.config');
 const AppRoutes = require('./routes/AppRoutes');
 const UserRoutes = require('./routes/UserRoutes');
 const RecipeRoutes = require('./routes/RecipeRoutes');
+require('dotenv').config()
 
 
 const port =process.env.PORT || 3000;;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/recipeshub');
+mongoose.connect(process.env.DB_HOST);
 
 const compile = webpack(webpackConfig);
 
